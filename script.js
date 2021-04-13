@@ -21,18 +21,13 @@ let combine = function (arr, ...arrays) {
 
 //solution 3
 let duplicateRemover = function (arr) {
-  let j = 0;
-  again:for (let i of arr) {
-    let temp = arr.slice(j + 1, arr.length);
-    j++;
-    temp.forEach((item, index) => {
-      if (i == item) arr.splice(index, 1);
-      if(index == temp.length-1){
-          break again;
-      }
-    });
-  }
-  j = 0;
+  let unique = [];
+  arr.forEach(item => {
+    if (!unique.includes(item)) {
+      unique.push(item)
+    }
+  });
+  return unique
 };
 
 console.log(duplicateRemover([1, 1, 4, 5, 3, 5, 3, 9, 1, 8, 3]));
