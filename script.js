@@ -19,6 +19,24 @@ let combine = function (arr, ...arrays) {
   return arr;
 };
 
+//solution 3
+let duplicateRemover = function (arr) {
+  let j = 0;
+  again:for (let i of arr) {
+    let temp = arr.slice(j + 1, arr.length);
+    j++;
+    temp.forEach((item, index) => {
+      if (i == item) arr.splice(index, 1);
+      if(index == temp.length-1){
+          break again;
+      }
+    });
+  }
+  j = 0;
+};
+
+console.log(duplicateRemover([1, 1, 4, 5, 3, 5, 3, 9, 1, 8, 3]));
+
 //solution 4
 let numberFinder = function (text) {
   number = [];
@@ -43,5 +61,3 @@ let arrayFlatter = function (arr) {
   }
   return flat;
 };
-
-console.log(arrayFlatter([5, [2, 3], [[[2, 9], 4], 4], 1, 0]));
